@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Biblioteca UI</title>
+    <link rel="stylesheet" href="../styles/ui_library.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="ui-sidebar">
+        <h2>Componentes</h2>
+        <ul>
+            <li><a href="#botones">Botones</a></li>
+            <li><a href="#tarjetas">Tarjetas</a></li>
+            <li><a href="#formularios">Formularios</a></li>
+            <li><a href="#alertas">Alertas</a></li>
+            <li><a href="#tabs">Tabs</a></li>
+            <li><a href="#modal">Modal</a></li>
+        </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="ui-content">
+
+        <!-- NAVBAR -->
+        <div class="ui-navbar">
+            <h1>Biblioteca UI - Demo</h1>
+            <button onclick="openModal()">Abrir Modal</button>
+        </div>
+
+        <!-- SECCIÓN: BOTONES -->
+        <section id="botones">
+            <h2>Botones</h2>
+            <p>Ejemplos de botones UI con hover.</p>
+            <br>
+            <button class="ui-btn">Botón normal</button>
+            <button class="ui-btn-primary">Primario</button>
+            <button class="ui-btn-secondary">Secundario</button>
+        </section>
+
+        <hr><br>
+
+        <!-- SECCIÓN: TARJETAS -->
+        <section id="tarjetas">
+            <h2>Tarjetas</h2>
+            <p>T.I.C.</p>
+            <br>
+            <div class="ui-card">
+                <img src="../assets/images/placeholder.jpg" class="ui-card-img">
+                <h3 class="ui-card-title">Título de la tarjeta</h3>
+                <p class="ui-card-text">Tecnología de la información.</p>
+                <button class="ui-btn-primary">Acción</button>
+            </div>
+        </section>
+
+        <hr><br>
+
+        <!-- SECCIÓN: FORMULARIOS -->
+        <section id="formularios">
+            <h2>Formularios</h2>
+            <form class="ui-form">
+                <label class="ui-label">Nombre</label>
+                <input type="text" class="ui-input" placeholder="Tu nombre">
+
+                <label class="ui-label">País</label>
+                <select class="ui-select">
+                    <option>Ecuador</option>
+                    <option>Perú</option>
+                    <option>Colombia</option>
+                </select>
+
+                <button class="ui-btn-primary">Enviar</button>
+            </form>
+        </section>
+
+        <hr><br>
+
+        <!-- SECCIÓN: ALERTAS -->
+        <section id="alertas">
+            <h2>Alertas</h2>
+            <p>Alertas con colores.</p>
+            <br>
+            <div class="ui-alert ui-alert-success">✔ Operación realizada con éxito</div>
+            <div class="ui-alert ui-alert-error">✖ Ocurrió un error inesperado</div>
+            <div class="ui-alert ui-alert-info">ℹ Información importante</div>
+        </section>
+
+        <hr><br>
+
+        <!-- SECCIÓN: TABS -->
+        <section id="tabs">
+            <h2>Pestañas / Tabs</h2>
+            <p>Componente de navegación con pestañas.</p>
+            <br>
+
+            <div class="ui-tabs">
+                <button class="ui-tab active" onclick="openTab(event, 'tab1')">General</button>
+                <button class="ui-tab" onclick="openTab(event, 'tab2')">Opciones</button>
+                <button class="ui-tab" onclick="openTab(event, 'tab3')">Avanzado</button>
+            </div>
+
+            <div id="tab1" class="ui-tab-content" style="display:block;">
+                Contenido del tab "General".
+            </div>
+
+            <div id="tab2" class="ui-tab-content">
+                Contenido del tab "Opciones".
+            </div>
+
+            <div id="tab3" class="ui-tab-content">
+                Contenido del tab "Avanzado".
+            </div>
+        </section>
+
+        <hr><br>
+
+        <!-- SECCIÓN: MODAL -->
+        <section id="modal">
+            <h2>Modal (Ventana emergente)</h2>
+            <button class="ui-btn-primary" onclick="openModal()">Mostrar modal</button>
+        </section>
+
+    </main>
+
+    <!-- MODAL -->
+    <div class="ui-modal-overlay" id="modalOverlay">
+        <div class="ui-modal">
+            <h3>Hola 👋</h3>
+            <p>Este es un modal de ejemplo.</p>
+            <br>
+            <button class="ui-btn-primary" onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // MODAL
+        function openModal() {
+            document.getElementById("modalOverlay").classList.add("active");
+        }
+
+        function closeModal() {
+            document.getElementById("modalOverlay").classList.remove("active");
+        }
+
+        // TABS
+        function openTab(evt, tabId) {
+            const contents = document.querySelectorAll(".ui-tab-content");
+            const tabs = document.querySelectorAll(".ui-tab");
+
+            contents.forEach(c => c.style.display = "none");
+            tabs.forEach(t => t.classList.remove("active"));
+
+            document.getElementById(tabId).style.display = "block";
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
+
